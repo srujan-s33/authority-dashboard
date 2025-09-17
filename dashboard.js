@@ -2,7 +2,7 @@
 const sampleAlerts = [
     {
         id: 'T001',
-        touristName: 'Sarah Johnson',
+        touristName: 'Aarav Sharma',
         touristId: 'TID-2024-001',
         alertType: 'medical',
         severity: 'high',
@@ -14,7 +14,7 @@ const sampleAlerts = [
     },
     {
         id: 'T002',
-        touristName: 'Michael Chen',
+        touristName: 'Adithya Lyer',
         touristId: 'TID-2024-002',
         alertType: 'security',
         severity: 'high',
@@ -26,7 +26,7 @@ const sampleAlerts = [
     },
     {
         id: 'T003',
-        touristName: 'Emma Rodriguez',
+        touristName: 'Priya Sigh',
         touristId: 'TID-2024-003',
         alertType: 'lost',
         severity: 'medium',
@@ -38,7 +38,7 @@ const sampleAlerts = [
     },
     {
         id: 'T004',
-        touristName: 'James Wilson',
+        touristName: 'Sehwag Patel',
         touristId: 'TID-2024-004',
         alertType: 'accident',
         severity: 'medium',
@@ -50,7 +50,7 @@ const sampleAlerts = [
     },
     {
         id: 'T005',
-        touristName: 'Lisa Thompson',
+        touristName: 'Shashank Reddy',
         touristId: 'TID-2024-005',
         alertType: 'medical',
         severity: 'low',
@@ -74,7 +74,7 @@ const sampleAlerts = [
     },
     {
         id: 'T007',
-        touristName: 'Anna Petrov',
+        touristName: 'Rahul Choudhray',
         touristId: 'TID-2024-007',
         alertType: 'security',
         severity: 'medium',
@@ -86,7 +86,7 @@ const sampleAlerts = [
     },
     {
         id: 'T008',
-        touristName: 'Robert Garcia',
+        touristName: 'Manav Singh',
         touristId: 'TID-2024-008',
         alertType: 'lost',
         severity: 'low',
@@ -525,7 +525,7 @@ function refreshData() {
 
 function simulateNewAlert() {
     // Randomly generate a new alert
-    const names = ['Alex Johnson', 'Maria Garcia', 'John Smith', 'Sophie Chen', 'Ahmed Hassan'];
+    const names = ['Kavya Singh', 'Maria Patel', 'John Smith', 'Tanvi Suresh', 'Ahmed Hassan'];
     const types = ['medical', 'security', 'lost', 'accident'];
     const severities = ['high', 'medium', 'low'];
     

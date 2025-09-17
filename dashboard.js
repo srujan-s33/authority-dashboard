@@ -62,7 +62,7 @@ const sampleAlerts = [
     },
     {
         id: 'T006',
-        touristName: 'David Kim',
+        touristName: 'Ganesh Kashyap',
         touristId: 'TID-2024-006',
         alertType: 'natural',
         severity: 'high',

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Alerts Inbox - Smart Tourist Safety Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="brand-section">
+                    <div class="logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1>SOS Alerts Inbox</h1>
+                        <span class="subtitle">Smart Tourist Safety Dashboard</span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="alert-counter">
+                        <span class="counter-badge" id="alertCounter">12</span>
+                        <span>Active Alerts</span>
+                    </div>
+                    <button class="refresh-btn" id="refreshBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 4V10H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M23 20V14H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M3.51 15A9 9 0 0 0 18.36 18.36L23 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Refresh
+                    </button>
+                    <div class="user-profile">
+                        <div class="profile-avatar">A</div>
+                        <span>Authority User</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters and Search -->
+        <section class="filters-section">
+            <div class="filters-content">
+                <div class="search-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" placeholder="Search by tourist name or ID..." id="searchInput">
+                </div>
+                
+                <div class="filter-controls">
+                    <select id="alertTypeFilter" class="filter-select">
+                        <option value="">All Alert Types</option>
+                        <option value="medical">Medical Emergency</option>
+                        <option value="security">Security Threat</option>
+                        <option value="lost">Lost Tourist</option>
+                        <option value="accident">Accident</option>
+                        <option value="natural">Natural Disaster</option>
+                    </select>
+                    
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Statuses</option>
+                        <option value="new">New</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    
+                    <select id="distanceFilter" class="filter-select">
+                        <option value="">All Distances</option>
+                        <option value="0-1">0-1 km</option>
+                        <option value="1-5">1-5 km</option>
+                        <option value="5-10">5-10 km</option>
+                        <option value="10+">10+ km</option>
+                    </select>
+                    
+                    <select id="timeFilter" class="filter-select">
+                        <option value="">All Time</option>
+                        <option value="last-hour">Last Hour</option>
+                        <option value="last-day">Last 24 Hours</option>
+                        <option value="last-week">Last Week</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts Table -->
+        <main class="alerts-main">
+            <div class="table-container">
+                <table class="alerts-table" id="alertsTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-sort="severity">
+                                <span>Severity</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </th>
+                            <th class="sortable" data-sort="name">
+                                <span>Tourist Name</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </th>
+                            <th class="sortable" data-sort="type">
+                                <span>Alert Type</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </th>
+                            <th class="sortable" data-sort="distance">
+                                <span>Distance</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </th>
+                            <th class="sortable" data-sort="time">
+                                <span>Time</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alertsTableBody">
+                        <!-- Dynamic content will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Notification Panel -->
+        <div class="notification-panel" id="notificationPanel">
+            <div class="notification-header">
+                <h3>New Alert</h3>
+                <button class="close-notification" id="closeNotification">×</button>
+            </div>
+            <div class="notification-content" id="notificationContent">
+                <!-- Dynamic notification content -->
+            </div>
+        </div>
+
+        <!-- Action Modals -->
+        <div class="modal-overlay" id="mapModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Tourist Location</h3>
+                    <button class="close-modal" onclick="closeModal('mapModal')">×</button>
+                </div>
+                <div class="modal-content">
+                    <div class="map-placeholder">
+                        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <p>Interactive map would be displayed here</p>
+                        <div class="location-details">
+                            <p><strong>Coordinates:</strong> <span id="modalCoordinates"></span></p>
+                            <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="messageModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>Send Message to Tourist</h3>
+                    <button class="close-modal" onclick="closeModal('messageModal')">×</button>
+                </div>
+                <div class="modal-content">
+                    <div class="message-form">
+                        <label for="messageText">Message:</label>
+                        <textarea id="messageText" rows="4" placeholder="Type your message to the tourist..."></textarea>
+                        <div class="message-actions">
+                            <button class="btn-secondary" onclick="closeModal('messageModal')">Cancel</button>
+                            <button class="btn-primary" onclick="sendMessage()">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
